@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FileLogger {
+public class FileLogger extends BaseLogger {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     private PrintWriter writer;
 
@@ -27,7 +27,7 @@ public class FileLogger {
     }
 
     public void log(String level, String message) {
-        writer.printf("[%s] %s: %s\n", getCurrentDateString(),level, message);
+        writer.printf("[%s] %s: %s\n", getCurrentDateString(), level, message);
     }
 
     private String getCurrentDateString() {
