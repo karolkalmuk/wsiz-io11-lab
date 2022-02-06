@@ -7,9 +7,14 @@ import java.util.Date;
 
 public class FileLogger implements Logger {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    private boolean logInfo;
+    private boolean logError;
     private PrintWriter writer;
 
-    public FileLogger(String fileName) {
+    public FileLogger(String fileName, boolean logInfo, boolean logError) {
+        this.logInfo = logInfo;
+        this.logError = logError;
+
         try {
             FileOutputStream fileStream = new FileOutputStream(fileName, true);
             this.writer = new PrintWriter(fileStream, true);
@@ -19,11 +24,15 @@ public class FileLogger implements Logger {
     }
 
     public void info(String message) {
-        log("INFO ", message);
+        if (logInfo) {
+            log("INFO ", message);
+        }
     }
 
     public void error(String message) {
-        log("ERROR", message);
+        if (logError) {
+            log("ERROR", message);
+        }
     }
 
     public void log(String level, String message) {
