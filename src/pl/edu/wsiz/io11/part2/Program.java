@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        Company company = new Company(new ConsoleLogger());
+        Company company = new Company(new FileLogger("company-log.txt"));
 
         company.addEmployee(new Developer("Jan", "Kowalski", (byte) 31, Sex.MALE, 3000, new String[]{"HTML"}));
         company.addEmployee(new Manager("Anna", "Kowalczyk", (byte) 27, Sex.FEMALE, 4000, new String[]{"Java", "CSS"}, 14));
